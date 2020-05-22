@@ -1,0 +1,62 @@
+import { Request, Response } from 'express';
+import { getRepository } from 'typeorm';
+
+import { BasPersonas } from '../entities/BasPersonas';
+
+
+export const listaPersonas = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const personas = await getRepository(BasPersonas).find();
+        return res.json(personas);
+    } catch (e) {
+        //return res.status(500).json('Error Servidor Interno');
+        return e;
+    }
+}
+
+export const verPersona = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const id = parseInt(req.params.id);
+        const persona = await getRepository(BasPersonas).findOne(id);
+        return res.json(persona);
+    } catch (e) {
+        return res.status(500).json('Error Servidor Interno');
+    }
+}
+
+export const crearPersona = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const nuevaPersona = getRepository(BasPersonas).create(req.body);
+        const resultado = await getRepository(BasPersonas).save(nuevaPersona);
+        return res.json(resultado);
+    } catch (e) {
+        return res.status(500).json('Error Servidor Interno');
+    }
+}
+
+export const actualizarPersona = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        console.log("aqui esta " + req.params.id);
+        const persona = await getRepository(BasPersonas).findOne(req.params.id);
+        console.log(persona);
+        if (persona) {
+            getRepository(BasPersonas).merge(persona, req.body);
+            const resultado = await getRepository(BasPersonas).save(persona);
+            return res.json(resultado);
+        } else {
+            return res.json('No se tiene Registro');    
+        }
+    } catch (e) {
+        return res.status(500).json('Error Servidor Interno');
+    }
+}
+
+export const borrarPersona = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const persona = await getRepository(BasPersonas).delete(req.params.id);
+        return res.json(persona);
+    } catch (e) {
+        return res.status(500).json('Error Servidor Interno');
+    }
+}
+

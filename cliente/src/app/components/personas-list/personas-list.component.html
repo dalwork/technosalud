@@ -1,0 +1,43 @@
+<div class="reglist">
+
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary" routerLink="/personas/adicionar">Nuevo <i
+                class="far fa-user"></i></button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>CI</th>
+                <th>Email</th>
+                <th>Celular</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let persona of personas; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ persona.nombres }}</td>
+                <td>{{ persona.apellido1}} {{persona.apellido2}}</td>
+                <td>{{ persona.ci }}</td>
+                <td>{{ persona.email }}</td>
+                <td>{{ persona.celular }}</td>
+                <td>
+                    <button type="button" class="btn btn-info"
+                        [routerLink]="['/personas/actualizar',persona.idPersona]"><i class="far fa-edit"></i></button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="borrarPersona(persona.idPersona)"><i
+                            class="far fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--<button type="submit" class="btn btn-primary" (click)="onNew()">Nuevo</button>
+    (click)="onEdit(i)" (click)="onDelete(i)" -->

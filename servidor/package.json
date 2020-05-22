@@ -1,0 +1,33 @@
+{
+  "name": "saludintegral",
+  "version": "1.0.0",
+  "description": "Sistema de Consolidacion Hopitalaria",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -w",
+    "dev": "nodemon build/app.js",
+    "dev1": "cocurrently \"tsc -w\" \"nodemon build/app.js\""
+  },
+  "author": "Dali Aparicio",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "morgan": "^1.10.0",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.25",
+    "typescript": "^3.9.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/morgan": "^1.9.0",
+    "@types/pg": "^7.14.3",
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
+}

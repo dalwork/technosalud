@@ -1,0 +1,22 @@
+import { Router } from 'express';
+import { verPersona, listaPersonas, crearPersona, actualizarPersona, borrarPersona } from '../controllers/personasController';
+
+class PersonasRouter {
+    
+    router: Router = Router();
+
+    constructor() {
+        this.config();
+    }
+
+    config(): void {
+        this.router.get('/personas', listaPersonas);
+        this.router.get('/personas/:id', verPersona);
+        this.router.post('/personas', crearPersona);
+        this.router.put('/personas/:id', actualizarPersona);
+        this.router.delete('/personas/:id', borrarPersona);
+    }
+}
+
+const personasRouter = new PersonasRouter();
+export default personasRouter.router;

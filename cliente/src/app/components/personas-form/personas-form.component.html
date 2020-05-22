@@ -1,0 +1,66 @@
+<div class="col-md-4 offset-md-2">
+    <div class="card">
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <input type="text" name="ci" [(ngModel)]="persona.ci" placeholder="Nro de documento de identidad"
+                        class="form-control" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="nombres" [(ngModel)]="persona.nombres" placeholder="Nombres"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="apellido1" [(ngModel)]="persona.apellido1" placeholder="Primer Apellido"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="apellido2" [(ngModel)]="persona.apellido2" placeholder="Segundo Apellido"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="email" [(ngModel)]="persona.correo" placeholder="Correo Electronico"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="movil" [(ngModel)]="persona.movil" placeholder="Telefono Celular"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="direccion" [(ngModel)]="persona.direccion"
+                        placeholder="Direccion de Vivienda" class="form-control">
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Fecha de nacimiento" name="dp" [(ngModel)]="fecha"
+                            ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                                    class="far fa-calendar-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <select name="genero" [(ngModel)]="persona.genero" class="form-control">
+                        <option value="" disabled selected>Seleccione Genero</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="estadoCivil" [(ngModel)]="persona.estadoCivil" class="form-control">
+                        <option value="" disabled selected>Seleccione Estado Civil</option>
+                        <option value="S">Soltero(a)</option>
+                        <option value="C">Casado(a)</option>
+                        <option value="D">Divorciado(a)</option>
+                        <option value="V">Viudo(a)</option>
+                    </select>
+                </div>
+                <button class="btn btn-success btn-block"
+                    (click)="editar ? actualizarPersona() : guardarNuevaPersona()">
+                    Guardar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
